@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.View;
+
+import com.example.chciabymbyckolejarzem.main.GameActivity;
 
 public class loggingpage extends AppCompatActivity {
 
@@ -19,7 +22,7 @@ public class loggingpage extends AppCompatActivity {
 
     /*** Called when the user taps the Next button */
     public void connectbutton(View view) {
-        Intent intent = new Intent(this, afterlogging.class);
+        Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
         // Do something in response to button
     }

@@ -1,13 +1,18 @@
 package com.example.chciabymbyckolejarzem.ConnectionService;
 
+import android.util.Log;
+
 import com.example.chciabymbyckolejarzem.model.AnswerMessage;
 import com.example.chciabymbyckolejarzem.model.BoostMessage;
 import com.example.chciabymbyckolejarzem.model.CategoryMessage;
 import com.example.chciabymbyckolejarzem.model.CategoryResponse;
 import com.example.chciabymbyckolejarzem.model.QuestionResponse;
+import com.example.chciabymbyckolejarzem.model.StatsMessage;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import java.net.URISyntaxException;
 
@@ -33,19 +38,22 @@ public class ConnectionServiceImpl {
 
     public void setOnLogin(final EmptyEventListener listener) {
         socket.on("userlogin", args -> listener.call());
+
+        Log.d("TEST", "stats");
     }
 
     public void setOnDisconnect(final EmptyEventListener listener) {
         socket.on("userdisconnect", args -> listener.call());
     }
 
-    public void getStats(CategoryMessage msg,  final EventListener<Integer> listener) {
+    public void getStats(StatsMessage msg, final EventListener<Integer> listener) {
         socket.emit("getstats", gson.toJson(msg));
 
+        Log.d("TEST", "stats");
+
         socket.on("statsresponse", args -> {
-            String data = (String) args[0];
-            Integer response = gson.fromJson(data, Integer.class);
-            listener.call(response);
+            Integer data = (Integer) args[0];
+            listener.call(data);
         });
     }
 
@@ -53,8 +61,8 @@ public class ConnectionServiceImpl {
         socket.emit("choosecategory", gson.toJson(msg));
 
         socket.on("categoryresponse", args -> {
-            String data = (String) args[0];
-            CategoryResponse response = gson.fromJson(data, CategoryResponse.class);
+            JSONObject data = (JSONObject) args[0];
+            CategoryResponse response = gson.fromJson(data.toString(), CategoryResponse.class);
             onGet.call(response);
         });
     }
@@ -63,8 +71,8 @@ public class ConnectionServiceImpl {
         socket.emit("addboost", gson.toJson(msg));
 
         socket.on("questionrespone", args -> {
-            String data = (String) args[0];
-            QuestionResponse response = gson.fromJson(data, QuestionResponse.class);
+            JSONObject data = (JSONObject) args[0];
+            QuestionResponse response = gson.fromJson(data.toString(), QuestionResponse.class);
             onGet.call(response);
         });
     }
@@ -73,8 +81,8 @@ public class ConnectionServiceImpl {
         socket.emit("answerQuestion", gson.toJson(msg));
 
         socket.on("answerResponse", args -> {
-            String data = (String) args[0];
-            Object response = gson.fromJson(data, Object.class);
+            JSONObject data = (JSONObject) args[0];
+            Object response = gson.fromJson(data.toString(), Object.class);
             onGet.call(response);
         });
     }

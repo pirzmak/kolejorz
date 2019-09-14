@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".afterlogging"></activity>
-        <activity android:name=".loggingpage" />
+        <activity android:name=".LoggingPage" />
         <activity
             android:name=".main.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -22,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".main.GameActivity" />
 
     </application>
 

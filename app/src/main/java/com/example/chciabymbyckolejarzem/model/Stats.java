@@ -1,6 +1,6 @@
 package com.example.chciabymbyckolejarzem.model;
 
-public class Stats {
+public class Stats extends Response {
     private int pkt;
 
     public Stats(int pkt) {

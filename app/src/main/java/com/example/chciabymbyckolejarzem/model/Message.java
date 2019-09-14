@@ -1,9 +1,9 @@
 package com.example.chciabymbyckolejarzem.model;
 
-public abstract class Messages {
+public abstract class Message {
     String UserId;
 
-    public Messages(String userId) {
+    public Message(String userId) {
         UserId = userId;
     }
 }

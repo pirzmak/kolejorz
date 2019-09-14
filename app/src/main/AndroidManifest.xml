@@ -12,7 +12,7 @@
         <activity android:name=".afterlogging"></activity>
         <activity android:name=".loggingpage" />
         <activity
-            android:name=".Main.MainActivity"
+            android:name=".main.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme">
@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

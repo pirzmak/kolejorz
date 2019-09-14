@@ -7,6 +7,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chciabymbyckolejarzem.R;
+import com.example.chciabymbyckolejarzem.loggingpage;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,5 +22,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+    }
+
+    /*** Called when the user taps the Next button */
+    public void startbutton(View view) {
+        Intent intent = new Intent(this, loggingpage.class);
+        startActivity(intent);
+        // Do something in response to button
     }
 }

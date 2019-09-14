@@ -36,5 +36,3 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
 }
-
-apply plugin: 'com.google.gms.google-services'

@@ -4,6 +4,7 @@ package com.example.chciabymbyckolejarzem.main;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -43,9 +44,9 @@ public class GameActivity extends AppCompatActivity {
         ));
 
         service.getStats(new StatsMessage("asd"), v -> onGetStats((Integer)v));
-        service.chooseCategory(new CategoryMessage("asd", "test"), v -> {});
-        service.addBoost(new BoostMessage("asd", "asd", BOOST.FROZEN), v -> {});
-        service.answerQuestion(new AnswerMessage("asd", "asd"), v -> {});
+        service.chooseCategory(new CategoryMessage("asd", "test"), v -> Log.d("TEST", "chooseCategory"));
+        service.addBoost(new BoostMessage("asd", "asd", BOOST.FROZEN), v -> Log.d("TEST", "boost"));
+        service.answerQuestion(new AnswerMessage("asd", "asd"), v -> Log.d("TEST", "answer"));
     }
 
 

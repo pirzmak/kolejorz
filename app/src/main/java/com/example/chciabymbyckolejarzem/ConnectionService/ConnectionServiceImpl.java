@@ -24,9 +24,9 @@ public class ConnectionServiceImpl {
     public ConnectionServiceImpl(String login,
                                  String password) {
         try {
-            socket = IO.socket("http://17a2215f.ngrok.io");
+            socket = IO.socket("http://c7755da6.ngrok.io");
             socket.connect();
-            socket.emit("join", login);
+            socket.emit("userlogin", login);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -39,7 +39,7 @@ public class ConnectionServiceImpl {
     public void setOnLogin(final EmptyEventListener listener) {
         socket.on("userlogin", args -> listener.call());
 
-        Log.d("TEST", "stats");
+        Log.d("TEST", "sessions");
     }
 
     public void setOnDisconnect(final EmptyEventListener listener) {
@@ -78,9 +78,9 @@ public class ConnectionServiceImpl {
     }
 
     public void answerQuestion(AnswerMessage msg, final EventListener<Object> onGet) {
-        socket.emit("answerQuestion", gson.toJson(msg));
+        socket.emit("answerquestion", gson.toJson(msg));
 
-        socket.on("answerResponse", args -> {
+        socket.on("answerresponse", args -> {
             JSONObject data = (JSONObject) args[0];
             Object response = gson.fromJson(data.toString(), Object.class);
             onGet.call(response);

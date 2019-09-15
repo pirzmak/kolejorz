@@ -1,15 +1,10 @@
 package com.example.chciabymbyckolejarzem.main;
 
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chciabymbyckolejarzem.ConnectionService.ConnectionServiceImpl;
@@ -18,7 +13,6 @@ import com.example.chciabymbyckolejarzem.model.AnswerMessage;
 import com.example.chciabymbyckolejarzem.model.BOOST;
 import com.example.chciabymbyckolejarzem.model.BoostMessage;
 import com.example.chciabymbyckolejarzem.model.CategoryMessage;
-import com.example.chciabymbyckolejarzem.model.CategoryResponse;
 import com.example.chciabymbyckolejarzem.model.StatsMessage;
 
 public class GameActivity extends AppCompatActivity {
@@ -47,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
         service.chooseCategory(new CategoryMessage("asd", "test"), v -> Log.d("TEST", "chooseCategory"));
         service.addBoost(new BoostMessage("asd", "asd", BOOST.FROZEN), v -> Log.d("TEST", "boost"));
         service.answerQuestion(new AnswerMessage("asd", "asd"), v -> Log.d("TEST", "answer"));
+
     }
 
 
